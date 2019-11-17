@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Atividades Complementares IFB</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+    </script>
+</head>
+
+<body>
+
+    <h1>Registre suas Atividades Complementares</h1>
+
+    <div>
+        <label for="semestre">Digite o semestre que realizou a atividade</label>
+        <input type="text" id="semestre" name="semestre" />
+        <br><br>
+    
+        <label for="atividade">Digite a atividade:</label>
+        <input type="text" id="atividade" name="atividade" />
+        <br><br>
+    
+        <label for="horas">Digite a carga horária da atividade:</label>
+        <input type="text" id="horas" name="horas" />
+
+    </div>
+
+    <br>
+    <button id="enviar_at" onclick="comando01()">Enviar</button>
+    <br>
+
+    <p> <!--Mensagem de envio-->
+
+    </p>
+    
+<!-- Quadro das atividades-->
+    <br>
+    <button id="cons_at" onclick="comando01()">Mostrar Atividades</button>
+
+    <div> <!--Div para mostrar o quadro com as atividades realizadas (oculto)-->
+
+    </div>
+<!-- Fim do quadro-->
+    
+    <br>
+    <div id="saida">
+
+    </div>
+
+    <script src="codigo01.js"></script>
+
+</body>
+
+</html>
