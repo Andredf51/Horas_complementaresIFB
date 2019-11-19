@@ -14,7 +14,7 @@ CREATE TABLE usuarios(
     nome varchar(50),
     semestre varchar(12),
     horas_acum int,
-    tipo varchar(100),
+    tipo varchar(100), -- adm, aluno, coordenador
     CPF varchar(15),
     login_user varchar(50),
     senha_user varchar(50),
@@ -155,6 +155,10 @@ INSERT INTO atividades VALUES
     (96,'Semanas Acadêmicas',22),
     (97,'Semanas Acadêmicas',23),
     (98,'Semanas Acadêmicas',24);
+
+-- entering users into users table
+insert into usuarios values
+	(default, 01, 'Andre', '4', 50, 'aluno', 123321123, 'login1', 'senha1', default);
 
 
 /*CREATE VIEW vwCurso_At as SELECT nome_curso, carga_hor_max, nome_ativ FROM cursos inner join atividades on cursos.id_cursos = atividades.id_curso_at
