@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Aluno</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+    </script> -->
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Bem-Vindo</h1>
+    <h1>Sistema de Gerenciamento de Atividades Complementares</h1>
+    <h2>Página do Administrador</h2>
+
+    <div> <!--Criar coordenador-->
+        <label for="matricula_coor">Digite a matrícula do coordenador:</label>
+        <input type="text" id="matricula_coor" name="matricula_coor" />
+        <br><br>
+
+        <label for="nome_coor">Digite o nome do coordenador</label>
+        <input type="text" id="nome_coor" name="nome_coor" />
+        <br><br>
+
+        <label for="curso_coor">Digite o curso  do coordenador:</label>
+        <input type="text" id="curso_coor" name="curso_coor" />
+        <br><br>
+
+        <label for="tipo_coor">Digite o tipo:</label> <!--Dúvida-->
+        <input type="text" id="tipo_coor" name="tipo_coor" />
+        <br><br>
+
+        <label for="login_coor">Criar o login do coordenador:</label>
+        <input type="text" id="login_coor" name="login_coor" />
+        <br><br>
+
+        <label for="senha_coor">Criar o senha do coordenador:</label>
+        <input type="text" id="senha_coor" name="senha_coor" />
+        <br><br>
+
+    </div>
+    
+    <br>
+    <button id="salvar_coor" onclick="salvar_coor()">Salvar</button>
+
+    <div id="saida_al">
+
+    </div>
+
+    <div><!--Criar cursos-->
+        <label for="nome_curso">Nome do curso:</label>
+        <input type="text" id="nome_curso" name="nome_curso" />
+        <br><br>
+
+    </div>
+
+    <br>
+    <button id="salvar_curso" onclick="salvar_curso()">Salvar</button>
+
+    <div id="saida_curso">
+
+    </div>
+
+    <script src="codigo01.js"></script>
+
+</body>
+
+</html>
