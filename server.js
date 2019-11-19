@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require('./connection');
+const cors = require('cors');
 const app = express();
-const port = 3000
+const db = require('./connection');
+const port = 3000;
 
+app.use(cors());
 app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
@@ -14,7 +16,13 @@ app.use(
 app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
 });
-app.get('/produto',db.getProdutos);
+//Curso
+app.get('/cursos',db.getCursos);
+//Usuario
+app.get('/usuario',db.getUsuario);
+//Atividade
+app.get('/atividade',db.getAtividade);
+app.post('/atividade',db.setAtividade);
 app.listen(port, () => {
     console.log(`Rodando na Porta ${port}.`)
 })
