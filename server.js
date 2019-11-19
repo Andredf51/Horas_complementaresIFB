@@ -11,7 +11,7 @@ app.use(
     bodyParser.urlencoded({
         extended: true,
     })
-)
+) 
 
 app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
@@ -24,10 +24,12 @@ app.put('/cursos',db.atualizaCurso);
 app.delete('/cursos',db.deletaCurso);
 //Usuario
 app.get('/usuario',db.getUsuario);
+app.post('/usuario', db.inserirCoordenador);
+app.delete('/usuario',db.deleta_coor)
 //Atividade
 app.get('/atividade',db.getAtividade);
 app.post('/atividade',db.setAtividade);
-
+app.get('/filtroAluno', db.filtroAluno)
 
 app.listen(port, () => {
     console.log(`Rodando na Porta ${port}.`)

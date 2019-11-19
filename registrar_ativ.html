@@ -29,6 +29,11 @@
     <br>
     <button id="enviar_at" onclick="enviarAtividade()">Enviar</button>
     <br>
+ <div id="atividade_aluno">
+        <label > ID:</label><input type="number" id="id_at_al">
+            <button id="cons_at" onclick="filtrar_al()">Mostrar todas as Atividades do Aluno</button>
+
+    </div>
 
     <p id="mensagem">
         <!--Mensagem de envio-->
@@ -37,7 +42,8 @@
 
     <!-- Quadro das atividades-->
     <br>
-    <button id="cons_at" onclick="mostrarAtividade()">Mostrar Atividades</button>
+    <button id="cons_at" onclick="mostrarAtividade()">Mostrar todas as Atividades</button>
+   
 
     <div>
         <!--Div para mostrar o quadro com as atividades realizadas (oculto)-->
@@ -74,28 +80,22 @@
                 type: 'GET',
                 url: 'http://localhost:3000/atividade',
                 success: function (dados) {
-                    $('#saida').html(`<table border='1'>
+                    for(let i in dados){
+                        $('#saida').append(`<table border='1'>
                         <tr>
                             <td>Id Atividade</td>
                             <td>Nome da Atividade</td>
                             <td>id_curso</td>
                         </tr>
                         <tr>
-                            <td>${dados[0].id_atividade}</td>
-                            <td>${dados[0].nome_ativ}</td>
-                            <td>${dados[0].id_cursos_at}</td>
+                            <td>${dados[i].id_atividade}</td>
+                            <td>${dados[i].nome_ativ}</td>
+                            <td>${dados[i].id_cursos_at}</td>
                         </tr>
-                        <tr>
-                            <td>${dados[1].id_atividade}</td>
-                            <td>${dados[1].nome_ativ}</td>
-                            <td>${dados[1].id_cursos_at}</td>
-                        </tr>
-                        <tr>
-                            <td>${dados[2].id_atividade}</td>
-                            <td>${dados[2].nome_ativ}</td>
-                            <td>${dados[2].id_cursos_at}</td>
-                        </tr>
+                        
                         </table>`);
+                    }
+                    
                     console.log(dados);
                     
                 },
@@ -105,6 +105,37 @@
                 }
             })
         }
+         function filtrar_al(){
+         
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3000/filtroAluno',
+                success: function (dados) {
+                    for(let i in dados){
+                        $('#saida').append(`<table border='1'>
+                        <tr>
+                            <td>Id Atividade</td>
+                            <td>Nome da Atividade</td>
+                            <td>id_curso</td>
+                        </tr>
+                        <tr>
+                            <td>${dados[i].id_atividade}</td>
+                            <td>${dados[i].nome_ativ}</td>
+                            <td>${dados[i].id_cursos_at}</td>
+                        </tr>
+                        
+                        </table>`);
+                    }
+                    
+                    console.log(dados);
+                    
+                },
+                error: function (dados) {
+                    console.log(dados);
+
+                }
+            })
+         }
     </script>
 </body>
 

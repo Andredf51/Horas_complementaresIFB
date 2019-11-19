@@ -1,10 +1,10 @@
 const Pool = require('pg').Pool
 //Quando for fazer a conexão com o banco entrar com as suas credenciais 
 const pool = new Pool({
-    user: '',
+    user: 'postgres',
     host: 'localhost',
     database: 'horasComplementares',
-    password: '',
+    password: 'andre',
     port: 5432,
 });
 // Consultando a tabela cursos
@@ -66,6 +66,31 @@ const getUsuario = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+
+//criar coordenador
+const inserirCoordenador = function (req, res) { //nome generico da função
+    const { matricula, nome,  tipo, login, senha,curso } = req.body;
+    pool.query(`INSERT INTO usuarios (id_usuario, matricula, nome, tipo, login_user, senha_user, id_cursos_user ) 
+     VALUES (default,$1,$2,$3,$4,$5,$6)`, [matricula, nome,  tipo, login, senha,curso], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(201).json(results.rows);
+    })
+}
+
+//deletar coordenador
+const deleta_coor = function(req,res){
+    const { id } = req.body;
+    pool.query('DELETE FROM usuarios WHERE (id_usuario = ($1))',
+    [id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(201).json(results.rows);
+    })
+}
+
 //Consultando a tabela atividade
 const getAtividade = (request, response) => {
     pool.query('SELECT * FROM atividades', (error, results) => {
@@ -84,6 +109,17 @@ const setAtividade = (req, res) => {
         res.status(201).send(`Horas Adicionadas`);
     })
 }
+
+const filtroAluno = (request, response) => {
+    pool.query('SELECT * FROM atividades where id_atividade = 1', (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
+ 
 //Exportando a função
 module.exports = {
     getCursos,
@@ -93,5 +129,8 @@ module.exports = {
     getCursosOrder,
     inserirCurso,
     atualizaCurso,
-    deletaCurso
+    deletaCurso,
+    inserirCoordenador,
+    deleta_coor,
+    filtroAluno
 }
