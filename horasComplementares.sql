@@ -1,59 +1,32 @@
 --Criando o Banco de dados Horas Complementares
 CREATE DATABASE horasComplementares;
 -- Criando a tabela cursos
+--Criando a tabela cursos
 CREATE TABLE cursos(
-	id_cursos int primary key,
-	nome_curso varchar(100),
-	carga_hor_max int
+    id_cursos int primary key,
+    nome_curso varchar(100),
+    carga_hor_max int
 );
-
--- Criando a tabela Usuários
+-- Criando a tabela Usuarios
 CREATE TABLE usuarios(
-	id_usuario int primary key,
-	login varchar(50),
-	senha varchar(50),
-	id_cursos int references cursos(id_cursos)
+    id_usuario serial primary key,
+    matricula varchar(20),
+    nome varchar(50),
+    semestre varchar(12),
+    horas_acum int,
+    tipo varchar(100),
+    CPF varchar(15),
+    login_user varchar(50),
+    senha_user varchar(50),
+    id_cursos_user int references cursos(id_cursos)
 );
-
--- Criando a tabela Aluno
-CREATE TABLE aluno(
-	matricula varchar(100) primary key,
-	nome varchar(50),
-	curso varchar(100),
-	semestre int,
-	horas_acum int,
-	id_usuario_aluno int references usuarios(id_usuario)
-);
-
--- Criando a tabela Professor 
-CREATE TABLE professor(
-	matricula varchar(100) primary key,
-	curso varchar(100),
-	nome varchar(50),
-	id_usuario_professor int references usuarios(id_usuario)
-);
-
--- Criando a tabela Coordenador
-CREATE TABLE coordenador(
-	matricula varchar(100) primary key,
-	curso varchar(100),
-	nome varchar(50),
-	id_usuario_coordenador int references usuarios(id_usuario)
-);
-
--- Criando a tabela Administrador 
-CREATE TABLE administrador(
-	CPF varchar(12) primary key,
-	nome varchar(50),
-	id_usuario_adm int references usuarios(id_usuario)
-);
-
---Criando a tabela Atividades 
+--Criando a tabela atividades
 CREATE TABLE atividades(
-	id_atividade int primary key,
-	nome_ativ varchar(200),
-	id_curso_at int references cursos(id_cursos)
+    id_atividade serial primary key,
+    nome_ativ varchar(100),
+    id_cursos_at int references cursos(id_cursos)
 );
+
 -- Inserindo valores na tabela cursos
 insert into cursos values 
 	(1,'Tecnologia em Sistemas Para Internet',100),
@@ -80,7 +53,7 @@ insert into cursos values
 	(22,'Tecnologia em Automação Industrial',100),
 	(23,'Tecnologia em Design de Moda',100),
 	(24,'Licenciatura em Física',300),
-	(25,'Banco de dados 2',1324);--Excluir
+	(25,'Banco de dados 2',1324);--Excluir 
 	
 -- Inserindo Valores na Tabela Atividades 
 INSERT INTO atividades VALUES 
@@ -183,70 +156,6 @@ INSERT INTO atividades VALUES
     (97,'Semanas Acadêmicas',23),
     (98,'Semanas Acadêmicas',24);
 
--- Inserindo Valores na tabela Usuários
-INSERT INTO usuarios values 
-	(1,'Abelardo','1234',24),
-    (2,'Abraão','2341',23),
-    (3,'Abigail','1134',22),
-    (4,'Abel','4234',21),
-    (5,'Abner','1434',20),
-    (6,'Assis','1345',19),
-    (7,'Afonso','1414',18),
-    (8,'Abila','1334',17),
-    (9,'Alessandra','1534',16),
-    (10,'Agner','2041',15),
-    (11,'Alonso','1934',14),
-    (12,'Abela','4254',13),
-    (13,'André','3434',12),
-    (14,'Alexandre','1545',11),
-    (15,'Alexa','1541',10),
-    (16,'Alex','1344',9),
-    (17,'Abelardo','5234',24),
-    (18,'April','5341',23),
-    (19,'Apu','6134',22),
-    (20,'Antonia','4634',21),
-    (21,'Antonia','1634',10),
-    (22,'Ana','1341',9),
-    (23,'Afelia','1664',8),
-    (24,'Anna','1224',7),
-    (25,'Alessandro','4534',6),
-    (26,'Agnaldo','2051',5),
-    (27,'Bruna','1594',4),
-    (28,'Beatriz','5254',3),
-    (29,'Bianca','3424',2),
-    (30,'Betina','1145',11),
-    (31,'Astronauta','5541',1),
-    (32,'Bernado','1344',9),
-    (33,'Caroline','1654',22),
-    (34,'Luan','1589',21),
-    (35,'Brena','2434',20),
-    (36,'Breno','5445',19),
-    (37,'Vanessa','2414',18),
-    (38,'Daniel','4534',17),
-    (39,'Enéias','3534',16),
-    (40,'Leonardo','2241',15),
-    (41,'Luiz','4914',14),
-    (42,'Micaela','5554',13),
-    (43,'Maicon','3444',12),
-    (44,'Felicia','1252',11),
-    (45,'Fabiana','1111',10),
-    (46,'Fernando','3544',9),
-    (47,'Douglas','5934',24),
-    (48,'Wendell','5021',23),
-    (49,'Elizeu','1154',22),
-    (50,'Matheus','4664',21),
-    (51,'Caio','5234',10),
-    (52,'Rodrigo','1539',9),
-    (53,'Mônica','4664',8),
-    (54,'Anny','2222',5),
-    (55,'Sandro','2534',6),
-    (56,'Agostinho','2351',5),
-    (57,'Marcos','6594',4),
-    (58,'Pedro','5654',3),
-    (59,'Emanuelle','3624',1),
-    (60,'Fernanda','6156',11),
-    (61,'Rafaela','7541',1),
-    (62,'Suelen','4344',9);
 
 /*CREATE VIEW vwCurso_At as SELECT nome_curso, carga_hor_max, nome_ativ FROM cursos inner join atividades on cursos.id_cursos = atividades.id_curso_at
 DROP VIEW vwCurso_at
