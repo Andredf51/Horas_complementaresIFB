@@ -163,6 +163,27 @@ const buscaIn = function(req,res){
     })
 }
 
+// Consultar aluno:
+const getAluno = function(req,res){
+    //const {range1,range2} = req.body;
+    pool.query('select * from consultaAlunoCurso ', (error, result) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).json(result.rows)
+    })
+}
+
+// const getAluno2 = function(req,res){
+//     const {idA, idC } = req.body;
+//     pool.query('SELECT usuarios.nome, cursos.nome_curso FROM cursos inner JOIN usuarios ON  usuarios.id_cursos_user = cursos.id_cursos where (usuarios.id_usuario = ($1)) AND (cursos.id_cursos = ($2))', [idA, idC], (error, result) => {
+//         if (error) {
+//             throw error
+//         }
+//         res.status(200).json(result.rows)
+//     })
+// }
+
 //Exportando a função
 module.exports = {
     getCursos,
@@ -180,4 +201,5 @@ module.exports = {
     selectJoin,
     mediaHorCursos,
     buscaIn,
+    getAluno
 }

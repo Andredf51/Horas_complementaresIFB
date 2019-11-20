@@ -43,7 +43,7 @@ function ver_coor() {
                         
                         </tr>
                     </table></fieldset>`)
-                    //dados do banco de dados
+                //dados do banco de dados
                 console.log(dados[i]);
             }
         },
@@ -200,3 +200,51 @@ function salvar_al() {
         }
     })
 }
+
+// consultar aluno
+function consultarAluno() {
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/aluno',
+        success: function (dados) {
+            for (let i in dados) {
+                $('.tableAluno').html('<table><tr><td>Nome do Aluno | </td><td>Cursando </td> </tr></table>')
+                $('.tableHora').append(
+                    `<table>
+                        <tr>
+                            <td>${dados[i].nome} | </td>
+                            <td>${dados[i].nome_curso}</td>
+                        </tr>
+                    </table>`)
+                console.log(dados[i]);
+            }
+        },
+        error: function (dados) {
+            console.log(dados);
+        }
+    })
+}
+
+// function consultarAluno2() {
+//     $.ajax({
+//         type: 'POST',
+//         url: 'http://localhost:3000/aluno',
+//         data: { 'idA': $('#nomeAluno').val(), 'idC': $('#cargaHoraria').val() },
+//         success: function (dados) {
+//             for (let i in dados) {
+//                 $('.tableAluno').html('<table><tr><td>Nome do Aluno | </td><td>Cursando </td> </tr></table>')
+//                 $('.tableHora').append(
+//                     `<table>
+//                         <tr>
+//                             <td>${dados[i].nome} | </td>
+//                             <td>${dados[i].nome_curso}</td>
+//                         </tr>
+//                     </table>`)
+//                 console.log(dados[i]);
+//             }
+//         },
+//         error: function (dados) {
+//             console.log(dados);
+//         }
+//     })
+// }
