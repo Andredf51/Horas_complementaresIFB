@@ -206,10 +206,12 @@ function searchIn() {
 function reload(){location.reload();}
 //Códigos referentes a aluno.html
 //Inserir aluno
+
+
 function salvar_al() {
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3000/usuario',
+        url: 'http://localhost:3000/usuario2',
         data: {
             'matricula': $('#matricula_al').val(),
             'nome': $('#nome_al').val(),

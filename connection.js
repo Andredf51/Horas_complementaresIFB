@@ -3,8 +3,8 @@ const Pool = require('pg').Pool
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'horasComplementares',
-    password: 'andre',
+    database: 'horaComplementar',
+    password: 'adm',
     port: 5432,
 });
 // Consultando a tabela cursos
@@ -131,9 +131,9 @@ const filtroAluno = (req, res) => {
 //comandos para aluno
 //criar aluno
 const inserirAluno = function (req, res) { //nome generico da função
-    const { matricula, nome, horas_ac, tipo, login, senha, curso } = req.body;
+    const { matricula, nome, horas_ac, curso, tipo, login, senha } = req.body;
     pool.query(`INSERT INTO usuarios (id_usuario, matricula, nome, horas_acum, tipo, login_user, senha_user, id_cursos_user ) 
-     VALUES (default,$1,$2,$3,$4,$5,$6,$7)`, [matricula, nome, horas_ac, tipo, login, senha, curso], (error, results) => {
+     VALUES (default, $1, $2, $3, $4, $5, $6, $7)`, [matricula, nome, horas_ac, tipo, login, senha, curso], (error, results) => {
         if (error) {
             throw error
         }

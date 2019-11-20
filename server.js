@@ -28,7 +28,7 @@ app.delete('/cursos',db.deletaCurso);
 app.get('/usuario',db.getUsuario);
 app.post('/usuario', db.inserirCoordenador);
 app.delete('/usuario',db.deleta_coor);
-app.post('/usuario',db.inserirAluno);
+app.post('/usuario2',db.inserirAluno);
 app.post('/usuario',db.inserirProfessor)
 
 //Atividade
