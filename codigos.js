@@ -155,22 +155,24 @@ function atualizarCurso() {
         }
     })
 }
+
 function removerCurso() {
+    // ,
+    //         'nome': $('#nome_curso').val(),
+    //         'carga': $('#carga_hor_max').val(),
     $.ajax({
         type: 'DELETE',
         url: 'http://localhost:3000/cursos',
         data: {
-            'id': $('#id_cursos').val(),
-            'nome': $('#nome_curso').val(),
-            'carga': $('#carga_hor_max').val(),
+            'id': $('#id_cursos').val()
         },
         success: function (dados) {
             console.log(dados);
-            $('#mensagem').text(`Curso Removido com sucesso`);
+            $('#mensagem').text(`Curso Removido COM sucesso`);
         },
         error: function (dados) {
             console.log(dados);
-            $('#mensagem').text(`Curso Removido sem sucesso`);
+            $('#mensagem').text(`Curso Removido SEM sucesso`);
         }
     })
 }

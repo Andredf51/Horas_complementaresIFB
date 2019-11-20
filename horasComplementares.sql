@@ -180,3 +180,31 @@ select * from consultaAlunoCurso
 /*CREATE VIEW vwCurso_At as SELECT nome_curso, carga_hor_max, nome_ativ FROM cursos inner join atividades on cursos.id_cursos = atividades.id_curso_at
 DROP VIEW vwCurso_at
 SELECT * FROM vwCurso_At; */
+
+
+-- tabela backup cursos
+--------------- TRIGGER
+CREATE TABLE bk_cursos(
+    id_cursos int primary key,
+    nome_curso varchar(100),
+    carga_hor_max int
+);
+
+-- criando função de trigger
+create or replace function backupCurso()
+returns trigger as 
+$BODY$ begin -- começo da função
+insert into bk_cursos values (old.id_cursos, old.nome_curso, old.carga_hor_max); -- old é o dado que estão sendo excluídos
+return null; -- porque é uma função que exige retorno
+end $BODY$ -- fim da função
+language 'plpgsql'
+
+-- criando trigger pra tabela cliente
+create trigger exclusao_curso -- nome da trigger
+after delete -- após deletar dados
+on cursos -- na tabela cliente 
+for each row -- pra cada linha
+execute procedure backupCurso(); -- chama a função 
+
+
+

@@ -35,6 +35,7 @@ const inserirCurso = function (req, res) {
         res.status(201).json(results.rows);
     })
 }
+
 //Atualizando Curso 
 const atualizaCurso = function (req, res) {
     const { id, nome, carga } = req.body;
@@ -46,17 +47,24 @@ const atualizaCurso = function (req, res) {
             res.status(201).json(results.rows);
         })
 }
+
+
 //Deletando Curso
 const deletaCurso = function (req, res) {
-    const { id, nome, carga } = req.body;
-    pool.query('DELETE FROM cursos WHERE (nome_curso = ($2)) or (carga_hor_max = ($3)) or (id_cursos = ($1))',
-        [id, nome, carga], (error, results) => {
+    //or (nome_curso = ($2)) or (carga_hor_max = ($3))
+    //, nome, carga
+    //, nome, carga
+    const { id } = req.body;
+    pool.query('DELETE FROM cursos WHERE (id_cursos = ($1)) ',
+        [id], (error, results) => {
             if (error) {
                 throw error
             }
             res.status(201).json(results.rows);
         })
 }
+
+
 //Consultando a tabela usuario
 const getUsuario = (req, res) => {
     pool.query('SELECT * FROM usuarios', (error, results) => {
