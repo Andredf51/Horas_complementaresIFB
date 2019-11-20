@@ -176,7 +176,34 @@ function removerCurso() {
         }
     })
 }
+function searchIn() {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/buscaIn',
+        data:{
+            "range1":$('#range1').val(),
+            "range2":$('#range2').val(),
+        },
+        success: function (dados) {
+                $('.tCurso').eq(0).html(`<p>SELECT * FROM cursos WHERE carga_hor_max in(${$('#range1').val()},${$('#range2').val()})</p>`)
+                for(let i in dados){
+                $('.tCurso').eq(1).append(
+                    `<table>
+                        <tr>
+                            <td>${dados[i].nome_curso}</td>
+                            <td>${dados[i].carga_hor_max}</td>
+                        </tr>
+                    </table>`)
+                console.log(dados);
+            }
+        },
+        error: function (dados) {
+            console.log(dados);
 
+        }
+    })
+}
+function reload(){location.reload();}
 //Códigos referentes a aluno.html
 //Inserir aluno
 function salvar_al() {
@@ -186,6 +213,7 @@ function salvar_al() {
         data: {
             'matricula': $('#matricula_al').val(),
             'nome': $('#nome_al').val(),
+            'horas_ac': $('#horas_add').val(),
             'curso': $('#curso_al').val(),
             'tipo': $('#tipo_al').val(),
             'login': $('#login_al').val(),
@@ -199,6 +227,32 @@ function salvar_al() {
         error: function (dados) {
             console.log(dados);
             $('#saida_al').text(`ERRO!!!, Aluno inserido sem sucesso`);
+        }
+    })
+}
+
+//Códigos referentes a professor.html
+//Inserir professor
+function salvar_prof() {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/usuario',
+        data: {
+            'matricula': $('#matricula_prof').val(),
+            'nome': $('#nome_prof').val(),
+            'curso': $('#curso_prof').val(),
+            'tipo': $('#tipo_prof').val(),
+            'login': $('#login_prof').val(),
+            'senha': $('#senha_prof').val()
+
+        },
+        success: function (dados) {
+            console.log(dados);
+            $('#saida_prof').text(`Professor inserido com sucesso`);
+        },
+        error: function (dados) {
+            console.log(dados);
+            $('#saida_prof').text(`ERRO!!!, Professor inserido sem sucesso`);
         }
     })
 }
@@ -250,3 +304,4 @@ function consultarAluno() {
 //         }
 //     })
 // }
+

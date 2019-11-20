@@ -24,11 +24,12 @@ app.put('/cursos',db.atualizaCurso);
 app.delete('/cursos',db.deletaCurso);
 
 //Usuario
-app.get('/aluno',db.getAluno);
+
 app.get('/usuario',db.getUsuario);
 app.post('/usuario', db.inserirCoordenador);
-app.delete('/usuario',db.deleta_coor)
+app.delete('/usuario',db.deleta_coor);
 app.post('/usuario',db.inserirAluno);
+app.post('/usuario',db.inserirProfessor)
 
 //Atividade
 app.get('/atividade',db.getAtividade);

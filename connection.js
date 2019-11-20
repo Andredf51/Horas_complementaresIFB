@@ -3,8 +3,8 @@ const Pool = require('pg').Pool
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'horaComplementar',
-    password: 'admin',
+    database: 'horasComplementares',
+    password: 'andre',
     port: 5432,
 });
 // Consultando a tabela cursos
@@ -131,6 +131,19 @@ const filtroAluno = (req, res) => {
 //comandos para aluno
 //criar aluno
 const inserirAluno = function (req, res) { //nome generico da função
+    const { matricula, nome, horas_ac, tipo, login, senha, curso } = req.body;
+    pool.query(`INSERT INTO usuarios (id_usuario, matricula, nome, horas_acum, tipo, login_user, senha_user, id_cursos_user ) 
+     VALUES (default,$1,$2,$3,$4,$5,$6,$7)`, [matricula, nome, horas_ac, tipo, login, senha, curso], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(201).json(results.rows);
+    })
+}
+
+//comandos para professor
+//criar professor
+const inserirProfessor = function (req, res) { //nome generico da função
     const { matricula, nome, tipo, login, senha, curso } = req.body;
     pool.query(`INSERT INTO usuarios (id_usuario, matricula, nome, tipo, login_user, senha_user, id_cursos_user ) 
      VALUES (default,$1,$2,$3,$4,$5,$6)`, [matricula, nome, tipo, login, senha, curso], (error, results) => {
@@ -140,6 +153,7 @@ const inserirAluno = function (req, res) { //nome generico da função
         res.status(201).json(results.rows);
     })
 }
+
 //Select com join
 //SELECT atividades.nome_ativ, usuarios.nome FROM usuarios  inner JOIN atividades ON atividades.id_cursos_at = usuarios.id_cursos_user WHERE atividades.nome_ativ LIKE 'M%'
 //SELECT AVG(carga_hor_max) FROM cursos 
@@ -192,6 +206,7 @@ const getAluno = function(req,res){
 //     })
 // }
 
+
 //Exportando a função
 module.exports = {
     getCursos,
@@ -206,6 +221,7 @@ module.exports = {
     deleta_coor,
     filtroAluno,
     inserirAluno,
+    inserirProfessor,
     selectJoin,
     mediaHorCursos,
     buscaIn,

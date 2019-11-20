@@ -85,20 +85,27 @@
 
         <label>Digite a carga horária Máxima do curso:</label>
         <input type="text" id="carga_hor_max" />
-
+        
+        <button onclick="reload()">Recarregar a pagina</button>
         <button onclick="inserirCursos()">Inserir</button>
         <button onclick="atualizarCurso()">Atualizar</button>
         <button onclick="removerCurso()">Remover</button>
         <button onclick="verCursos()">Ver Cursos</button>
         <button onclick="ordernarCursos()">Ordernar Cursos pelo nome</button>
-
+        <div>
+            <label>Busca da carga horaria entre </label>
+            <input type="number" name="" id="range1">
+            e
+            <input type="number" name="" id="range2">
+            <button onclick="searchIn()">Buscar</button>
+        </div>
         <p id='mensagem'></p>
     </div>
 
     <div class="tCurso"></div>
     <div class="tCurso"></div>
 
-    <h2> Consultando Alunos | Cursos  </h2>
+    <h2> Consultando Alunos | Cursos </h2>
     <div class=c>
         <!-- <p>  <label for="nomeAluno"> ID do Aluno: </label> 
         <input type="text" id="nomeAluno"> </p>
@@ -112,8 +119,9 @@
     </div>
 
     <!-- carregar dados vindo da consulta ao banco -->
-    <div class="tableAluno"></div> 
+    <div class="tableAluno"></div>
     <div class="tableHora"></div>
+
 
     <script src="codigos.js"></script>
 
