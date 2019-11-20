@@ -24,6 +24,7 @@ app.put('/cursos',db.atualizaCurso);
 app.delete('/cursos',db.deletaCurso);
 
 //Usuario
+
 app.get('/usuario',db.getUsuario);
 app.post('/usuario', db.inserirCoordenador);
 app.delete('/usuario',db.deleta_coor);
