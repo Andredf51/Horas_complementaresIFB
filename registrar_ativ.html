@@ -108,8 +108,11 @@
          function filtrar_al(){
          
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: 'http://localhost:3000/filtroAluno',
+                data:{
+                    'id': $('#id_at_al').val()
+                },
                 success: function (dados) {
                     for(let i in dados){
                         $('#saida').append(`<table border='1'>

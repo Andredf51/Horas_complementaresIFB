@@ -32,7 +32,16 @@ app.post('/usuario',db.inserirAluno);
 //Atividade
 app.get('/atividade',db.getAtividade);
 app.post('/atividade',db.setAtividade);
-app.get('/filtroAluno', db.filtroAluno)
+app.get('/filtroAluno', db.filtroAluno);
+app.post('/filtroAluno',db.filtroAluno);
+
+// Join 
+app.get('/teste',db.selectJoin);
+// AVG
+app.get('/avg',db.mediaHorCursos);
+// Busca 
+app.get('/buscaIn',db.buscaIn);
+app.post('/buscaIn',db.buscaIn);
 
 app.listen(port, () => {
     console.log(`Rodando na Porta ${port}.`)
