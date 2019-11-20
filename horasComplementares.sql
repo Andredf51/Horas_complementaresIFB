@@ -158,7 +158,17 @@ INSERT INTO atividades VALUES
 
 -- entering users into users table
 insert into usuarios values
-	(default, 01, 'Andre', '4', 50, 'aluno', 123321123, 'login1', 'senha1', 1);
+	(default, 01, 'Andre', '4', 50, 'aluno', 123321123, 'login1', 'senha1', 1),
+    (default, 02, 'Andre', '4', 50, 'aluno', 122321123, 'login2', 'senha2', 2),
+	(default, 03, 'Luiz', '5', 50, 'adm', 123087123, 'login3', 'senha3', 3),
+	(default, 04, 'Douglas', '7', 50, 'coordenador', 098321123, 'login4', 'senha4', 4),
+	(default, 05, 'Seidi', '2', 50, 'aluno', 123321123, 'login5', 'senha5', 5),
+	(default, 06, 'Marcos', '3', 50, 'aluno', 123321673, 'login6', 'senha6', 6),
+	(default, 07, 'Allysson', '2', 50, 'coordenador', 872321123, 'login7', 'senha7', 7),
+	(default, 08, 'Luiz Andre', '6', 50, 'aluno', 412321123, 'login8', 'senha8', 8),
+	(default, 09, 'Douglas Seidi', '3', 50, 'adm', 512321123, 'login9', 'senha9', 9),
+	(default, 10, 'Marcos Allysson', '2', 50, 'aluno', 612321123, 'login10', 'senha10', 10);
+
 
 
 /*CREATE VIEW vwCurso_At as SELECT nome_curso, carga_hor_max, nome_ativ FROM cursos inner join atividades on cursos.id_cursos = atividades.id_curso_at
