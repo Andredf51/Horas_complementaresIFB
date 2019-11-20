@@ -1,10 +1,10 @@
 const Pool = require('pg').Pool
 //Quando for fazer a conexão com o banco entrar com as suas credenciais 
 const pool = new Pool({
-    user: '',
+    user: 'postgres',
     host: 'localhost',
-    database: 'horasComplementares',
-    password: '',
+    database: 'horaComplementar',
+    password: 'admin',
     port: 5432,
 });
 // Consultando a tabela cursos

@@ -7,15 +7,35 @@
     <!-- < src="https://code.jquery.com/jquery-3.4.1.min.js">
     </> -->
     <script src="jquery-3.4.1.min.js"> </script>
+    <style>
+        h1 {
+            text-align: center;
+            background: chartreuse;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            background: black;
+        }
+
+        .c {
+            color: black;
+            margin: auto;
+            width: 50%;
+            border: 3px solid green;
+            padding: 10px;
+        }
+    </style>
 </head>
 
+
 <body>
+    <h1>Bem-Vindo ao Sistema de Gerenciamento de Atividades Complementares</h1>
+    <h2>Área do Administrador</h2>
 
-    <h1>Bem-Vindo</h1>
-    <h1>Sistema de Gerenciamento de Atividades Complementares</h1>
-    <h2>Página do Administrador</h2>
-
-    <div> <!--Criar coordenador-->
+    <div class="c">
+        <!--Criar coordenador-->
         <label for="matricula_coor">Digite a matrícula do coordenador:</label>
         <input type="text" id="matricula_coor" name="matricula_coor" />
         <br><br>
@@ -28,7 +48,8 @@
         <input type="number" id="curso_coor" name="curso_coor" />
         <br><br>
 
-        <label for="tipo_coor">Digite o tipo:</label> <!--Dúvida-->
+        <label for="tipo_coor">Digite o tipo:</label>
+        <!--Dúvida-->
         <input type="text" id="tipo_coor" name="tipo_coor" />
         <br><br>
 
@@ -37,28 +58,27 @@
         <br><br>
 
         <label for="senha_coor">Criar o senha do coordenador:</label>
-        <input type="password" id="senha_coor" name="senha_coor" />                                     
+        <input type="password" id="senha_coor" name="senha_coor" />
         <br><br>
 
-    </div>
-    
-    <br>
-    <button id="salvar_coor" onclick="salvar_coor()">Salvar Coordenador</button>
-    <button id="ver_coor" onclick="ver_coor()">ver Coordenador</button>
-    <button id="del_coor" onclick="del_coor()">Deletar Coordenador</button>
+        <!-- <div id="saida_coor2"></div> -->
+        <div id="saida_coor"></div>
 
-    <div id="saida_coor2"></div>
-    <div id="saida_coor">
+        <button id="salvar_coor" onclick="salvar_coor()">Salvar Coordenador</button>
+        <button id="ver_coor" onclick="ver_coor()">Consultar Coordenador</button>
+        <button id="del_coor" onclick="del_coor()">Excluir Coordenador</button>
 
     </div>
 
-    <br><br>
 
-    <div><!--Criar cursos-->
+    <h2> Curso </h2>
+
+    <div class="c">
+        <!--Criar cursos-->
         <label>Id do curso</label>
         <input type="number" id="id_cursos" />
         <br><br>
-         
+
         <label for="nome_curso">Nome do curso:</label>
         <input type="text" id="nome_curso" name="nome_curso" />
         <br><br>
@@ -66,25 +86,19 @@
         <label>Digite a carga horária Máxima do curso:</label>
         <input type="text" id="carga_hor_max" />
 
-    </div>
-
-    <br>
-
-    <div>
         <button onclick="inserirCursos()">Inserir</button>
         <button onclick="atualizarCurso()">Atualizar</button>
         <button onclick="removerCurso()">Remover</button>
         <button onclick="verCursos()">Ver Cursos</button>
         <button onclick="ordernarCursos()">Ordernar Cursos pelo nome</button>
+
+        <p id='mensagem'></p>
     </div>
-    <p id='mensagem'></p>
 
     <div class="tCurso"></div>
     <div class="tCurso"></div>
 
-
-   <script src="codigos.js"></script>
-
+    <script src="codigos.js"></script>
 
 </body>
 

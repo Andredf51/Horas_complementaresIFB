@@ -11,13 +11,13 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev":"nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Andredf51/Horas_complementaresIFB.git"
   },
-  "author": "",
+  "author": "André | Douglas | Marcos",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Andredf51/Horas_complementaresIFB/issues"

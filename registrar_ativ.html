@@ -29,9 +29,9 @@
     <br>
     <button id="enviar_at" onclick="enviarAtividade()">Enviar</button>
     <br>
- <div id="atividade_aluno">
-        <label > ID:</label><input type="number" id="id_at_al">
-            <button id="cons_at" onclick="filtrar_al()">Mostrar todas as Atividades do Aluno</button>
+    <div id="atividade_aluno">
+        <label> ID:</label><input type="number" id="id_at_al">
+        <button id="cons_at" onclick="filtrar_al()">Mostrar todas as Atividades do Aluno</button>
 
     </div>
 
@@ -43,7 +43,7 @@
     <!-- Quadro das atividades-->
     <br>
     <button id="cons_at" onclick="mostrarAtividade()">Mostrar todas as Atividades</button>
-   
+
 
     <div>
         <!--Div para mostrar o quadro com as atividades realizadas (oculto)-->
@@ -80,7 +80,7 @@
                 type: 'GET',
                 url: 'http://localhost:3000/atividade',
                 success: function (dados) {
-                    for(let i in dados){
+                    for (let i in dados) {
                         $('#saida').append(`<table border='1'>
                         <tr>
                             <td>Id Atividade</td>
@@ -95,9 +95,9 @@
                         
                         </table>`);
                     }
-                    
+
                     console.log(dados);
-                    
+
                 },
                 error: function (dados) {
                     console.log(dados);
@@ -105,16 +105,16 @@
                 }
             })
         }
-         function filtrar_al(){
-         
+        function filtrar_al() {
+
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:3000/filtroAluno',
-                data:{
+                data: {
                     'id': $('#id_at_al').val()
                 },
                 success: function (dados) {
-                    for(let i in dados){
+                    for (let i in dados) {
                         $('#saida').append(`<table border='1'>
                         <tr>
                             <td>Id Atividade</td>
@@ -129,16 +129,16 @@
                         
                         </table>`);
                     }
-                    
+
                     console.log(dados);
-                    
+
                 },
                 error: function (dados) {
                     console.log(dados);
 
                 }
             })
-         }
+        }
     </script>
 </body>
 

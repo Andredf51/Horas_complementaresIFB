@@ -169,7 +169,12 @@ insert into usuarios values
 	(default, 09, 'Douglas Seidi', '3', 50, 'adm', 512321123, 'login9', 'senha9', 9),
 	(default, 10, 'Marcos Allysson', '2', 50, 'aluno', 612321123, 'login10', 'senha10', 10);
 
+/*
+create view nomeQualquer as 
+(SELECT cursos.nome_curso, usuarios.nome, usuarios.horas_acum FROM usuarios  inner JOIN cursos ON cursos.id_cursos = usuarios.id_cursos_user );
 
+select * from nomeQualquer
+*/
 
 /*CREATE VIEW vwCurso_At as SELECT nome_curso, carga_hor_max, nome_ativ FROM cursos inner join atividades on cursos.id_cursos = atividades.id_curso_at
 DROP VIEW vwCurso_at
