@@ -174,7 +174,34 @@ function removerCurso() {
         }
     })
 }
+function searchIn() {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/buscaIn',
+        data:{
+            "range1":$('#range1').val(),
+            "range2":$('#range2').val(),
+        },
+        success: function (dados) {
+                $('.tCurso').eq(0).html(`<p>SELECT * FROM cursos WHERE carga_hor_max in(${$('#range1').val()},${$('#range2').val()})</p>`)
+                for(let i in dados){
+                $('.tCurso').eq(1).append(
+                    `<table>
+                        <tr>
+                            <td>${dados[i].nome_curso}</td>
+                            <td>${dados[i].carga_hor_max}</td>
+                        </tr>
+                    </table>`)
+                console.log(dados);
+            }
+        },
+        error: function (dados) {
+            console.log(dados);
 
+        }
+    })
+}
+function reload(){location.reload();}
 //Códigos referentes a aluno.html
 //Inserir aluno
 function salvar_al() {
