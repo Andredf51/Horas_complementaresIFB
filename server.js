@@ -22,10 +22,13 @@ app.get('/cursosOrder',db.getCursosOrder);
 app.post('/cursos',db.inserirCurso);
 app.put('/cursos',db.atualizaCurso);
 app.delete('/cursos',db.deletaCurso);
+
 //Usuario
 app.get('/usuario',db.getUsuario);
 app.post('/usuario', db.inserirCoordenador);
 app.delete('/usuario',db.deleta_coor)
+app.post('/usuario',db.inserirAluno);
+
 //Atividade
 app.get('/atividade',db.getAtividade);
 app.post('/atividade',db.setAtividade);

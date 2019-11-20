@@ -119,6 +119,19 @@ const filtroAluno = (request, response) => {
     })
 }
 
+//comandos para aluno
+//criar aluno
+const inserirAluno = function (req, res) { //nome generico da função
+    const { matricula, nome, tipo, login, senha, curso } = req.body;
+    pool.query(`INSERT INTO usuarios (id_usuario, matricula, nome, tipo, login_user, senha_user, id_cursos_user ) 
+     VALUES (default,$1,$2,$3,$4,$5,$6)`, [matricula, nome, tipo, login, senha, curso], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(201).json(results.rows);
+    })
+}
+
  
 //Exportando a função
 module.exports = {
@@ -132,5 +145,6 @@ module.exports = {
     deletaCurso,
     inserirCoordenador,
     deleta_coor,
-    filtroAluno
+    filtroAluno,
+    inserirAluno
 }

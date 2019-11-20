@@ -29,6 +29,7 @@ function ver_coor() {
         url: 'http://localhost:3000/usuario',
         success: function (dados) {
             for (let i in dados) {
+                $('#saida_coor').html('<table><tr><td>ID</td><td>Matrícula</td><td>Nome</td><td>Semestre</td><td>Tipo</td><td>Login</td></tr></table>')
                 $('#saida_coor').append(
                     `<fieldset><table border='1'>
                         <tr>
@@ -36,9 +37,7 @@ function ver_coor() {
                             <td>${dados[i].matricula}</td>
                             <td>${dados[i].nome}</td> 
                             <td>${dados[i].semestre}</td> 
-                            <td>${dados[i].horas_acum}</td>
                             <td>${dados[i].tipo}</td> 
-                            <td>${dados[i].CPF}</td>
                             <td>${dados[i].login_user}</td> 
                             <td>${dados[i].id_cursos_user}</td>
                         
@@ -172,6 +171,32 @@ function removerCurso() {
         error: function (dados) {
             console.log(dados);
             $('#mensagem').text(`Curso Removido sem sucesso`);
+        }
+    })
+}
+
+//Códigos referentes a aluno.html
+//Inserir aluno
+function salvar_al() {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/usuario',
+        data: {
+            'matricula': $('#matricula_al').val(),
+            'nome': $('#nome_al').val(),
+            'curso': $('#curso_al').val(),
+            'tipo': $('#tipo_al').val(),
+            'login': $('#login_al').val(),
+            'senha': $('#senha_al').val()
+
+        },
+        success: function (dados) {
+            console.log(dados);
+            $('#saida_al').text(`Aluno inserido com sucesso`);
+        },
+        error: function (dados) {
+            console.log(dados);
+            $('#saida_al').text(`ERRO!!!, Aluno inserido sem sucesso`);
         }
     })
 }
