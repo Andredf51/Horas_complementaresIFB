@@ -184,6 +184,7 @@ function salvar_al() {
         data: {
             'matricula': $('#matricula_al').val(),
             'nome': $('#nome_al').val(),
+            'horas_ac': $('#horas_add').val(),
             'curso': $('#curso_al').val(),
             'tipo': $('#tipo_al').val(),
             'login': $('#login_al').val(),
@@ -200,3 +201,30 @@ function salvar_al() {
         }
     })
 }
+
+//Códigos referentes a professor.html
+//Inserir professor
+function salvar_prof() {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/usuario',
+        data: {
+            'matricula': $('#matricula_prof').val(),
+            'nome': $('#nome_prof').val(),
+            'curso': $('#curso_prof').val(),
+            'tipo': $('#tipo_prof').val(),
+            'login': $('#login_prof').val(),
+            'senha': $('#senha_prof').val()
+
+        },
+        success: function (dados) {
+            console.log(dados);
+            $('#saida_prof').text(`Professor inserido com sucesso`);
+        },
+        error: function (dados) {
+            console.log(dados);
+            $('#saida_prof').text(`ERRO!!!, Professor inserido sem sucesso`);
+        }
+    })
+}
+

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Criar Aluno</title>
+    <title>Avaliar Atividades</title>
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js">
     </script> -->
     <script src="jquery-3.4.1.min.js"></script>
@@ -13,12 +13,22 @@
 
     <h1>Bem-Vindo</h1>
     <h1>Sistema de Gerenciamento de Atividades Complementares</h1>
-    <h2>Página do Professor</h2>
+    <h2>Página do Avaliador</h2>
+
+    <button onclick="ver_ativ_pen()">Ver atividades pendentes</button>
+    <br><br>
+
+    <div id="quadro_atividades">
+
+    </div>
 
     <div>
         <label for="matricula">Digite sua matrícula:</label>
         <input type="text" id="matricula" name="matricula" />
         <br><br>
+
+        <label>Digite a carga horária Máxima do curso:</label>
+        <input type="text" id="carga_hor_max" />
 
 
     </div>
@@ -39,7 +49,7 @@
 
     </div>
 
-    <script src="codigo01.js"></script>
+    <script src="codigos.js"></script>
 
 </body>
 
